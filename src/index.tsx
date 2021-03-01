@@ -1,0 +1,8 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const App = props => (
+    <div>App from index.tsx</div>
+)
+
+ReactDOM.render(<App/>, document.getElementById('root'));
