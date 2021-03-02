@@ -10,10 +10,12 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].bundle.js',
-        publicPath: '/dist'
+        // publicPath: '/dist'
     },
     devServer: {
         historyApiFallback: true,
+        port: 3000,
+        hot: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -23,8 +25,24 @@ module.exports = {
         }),
         new CleanWebpackPlugin()
     ],
+    resolve: {
+        extensions: ['.tsx', '.jsx', '.js']
+    },
     module: {
         rules: [
+            {
+                test: /\.(j|t)sx?$/,
+                enforce: 'pre',
+                use: [
+                    {
+                        options: {
+                            eslintPath: require.resolve('eslint'),
+                        },
+                        loader: require.resolve('eslint-loader'),
+                    }
+                ],
+                exclude: /node_modules/,
+            },
             {
                 test: /\.(j|t)sx?$/,
                 include: path.join(__dirname, 'src'),
@@ -49,13 +67,32 @@ module.exports = {
             },
             {
                 test: /\.(sa|sc|c)ss$/,
+                exclude: /\.module\.(sa|sc|c)ss$/,
                 use: [
+                    // Creates `style` nodes from JS strings
+                    'style-loader',
+                    // Translates CSS into CommonJS
+                    'css-loader',
+                    // Compiles Sass to CSS
+                    'sass-loader',
+                ]
+            },
+            {
+                test: /\.module\.(sa|sc|c)ss$/,
+                use: [
+                    // Creates `style` nodes from JS strings
+                    'style-loader',
+                    // Translates CSS into CommonJS
                     {
-                        loader: 'style-loader',
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            // namedExport: true,
+                            // camelCase: true,
+                        }
                     },
-                    {
-                        loader: 'css-loader'
-                    }
+                    // Compiles Sass to CSS
+                    'sass-loader',
                 ]
             },
             {

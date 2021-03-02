@@ -1,0 +1,7 @@
+.articles {
+  background: green;
+
+  &:hover {
+    background: blue;
+  }
+}

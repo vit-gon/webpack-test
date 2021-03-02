@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=development webpack",
-    "dev": "webpack-dev-server --mode=development --hot --inline",
-    "start": "webpack serve",
+    "start": "webpack serve --mode=development --hot --inline",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,8 +20,14 @@
   },
   "homepage": "https://github.com/vit-gon/webpack-test#readme",
   "devDependencies": {
+    "@types/react": "^17.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
     "clean-webpack-plugin": "^3.0.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-react": "^7.22.0",
     "html-webpack-plugin": "^5.2.0",
+    "typescript-plugin-css-modules": "^3.2.0",
     "webpack": "^5.24.2",
     "webpack-cli": "^4.5.0"
   },
@@ -34,6 +39,8 @@
     "@babel/preset-typescript": "^7.13.0",
     "@hot-loader/react-dom": "^17.0.1",
     "babel-loader": "^8.2.2",
+    "css-loader": "^5.1.1",
+    "eslint": "^7.21.0",
     "http-server": "^0.12.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -41,6 +48,10 @@
     "react-hot-loader": "^4.13.0",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
+    "sass": "^1.32.8",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "typescript": "^4.2.2",
     "webpack-dev-server": "^3.11.2"
   }
 }
